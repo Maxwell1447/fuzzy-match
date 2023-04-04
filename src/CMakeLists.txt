@@ -2,10 +2,10 @@ set(FUZZY_SOURCES
   fuzzy_match.cc
   filter_matches.cc
   ngram_matches.cc
-  bm25_matches.cc
+  # bm25_matches.cc
   vocab_indexer.cc
   suffix_array.cc
-  bm25.cc
+  # bm25.cc
   sentence.cc
   fuzzy_matcher_binarization.cc
   edit_distance.cc
@@ -17,14 +17,14 @@ if(MSVC)
   set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
 
-find_package (Eigen3 3.3 QUIET)
-if(TARGET Eigen3::Eigen)
-  message("-- Found Eigen3, building all sources.")
-  add_definitions(-DUSE_EIGEN)
-else()
-  message("-- Eigen3 not found, excluding bm25_matches.cc and bm25.cc.")
-  list(REMOVE_ITEM FUZZY_SOURCES bm25_matches.cc bm25.cc)
-endif()
+# find_package (Eigen3 3.3 QUIET)
+# if(TARGET Eigen3::Eigen)
+#   message("-- Found Eigen3, building all sources.")
+#   add_definitions(-DUSE_EIGEN)
+# else()
+#   message("-- Eigen3 not found, excluding bm25_matches.cc and bm25.cc.")
+#   list(REMOVE_ITEM FUZZY_SOURCES bm25_matches.cc bm25.cc)
+# endif()
 
 if (COMMAND create_library)
   create_library(${PROJECT_NAME} SHARED
@@ -56,6 +56,6 @@ target_link_libraries(${PROJECT_NAME}
   Threads::Threads
   )
 
-if(TARGET Eigen3::Eigen)
-  target_link_libraries(${PROJECT_NAME} Eigen3::Eigen)
-endif()
+# if(TARGET Eigen3::Eigen)
+#   target_link_libraries(${PROJECT_NAME} Eigen3::Eigen)
+# endif()
