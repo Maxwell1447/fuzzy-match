@@ -10,10 +10,10 @@
 
 #include <unicode/normalizer2.h>
 #include <fuzzy/suffix_array.hh>
-#ifdef USE_EIGEN
-  #include <fuzzy/bm25.hh>
-  #include <fuzzy/bm25_matches.hh>
-#endif
+// #ifdef USE_EIGEN
+//   #include <fuzzy/bm25.hh>
+//   #include <fuzzy/bm25_matches.hh>
+// #endif
 #include <fuzzy/costs.hh>
 #include <fuzzy/ngram_matches.hh>
 #include <fuzzy/edit_distance.hh>
@@ -565,15 +565,15 @@ namespace fuzzy
       }
       filter_matches = &nGramMatches;
     }
-#ifdef USE_EIGEN
-    else if (filter_type == IndexType::BM25)
-    {
-      const BM25& bm25 = static_cast<const BM25&>(filter);
-      filter_matches = new BM25Matches(fuzzy, p_length, min_subseq_length, bm25, bm25_buffer, bm25_cutoff);
-      BM25Matches& bm25Matches = static_cast<BM25Matches&>(*filter_matches);
-      bm25Matches.register_pattern(pattern_wids, edit_costs);
-    }
-#endif
+// #ifdef USE_EIGEN
+//     else if (filter_type == IndexType::BM25)
+//     {
+//       const BM25& bm25 = static_cast<const BM25&>(filter);
+//       filter_matches = new BM25Matches(fuzzy, p_length, min_subseq_length, bm25, bm25_buffer, bm25_cutoff);
+//       BM25Matches& bm25Matches = static_cast<BM25Matches&>(*filter_matches);
+//       bm25Matches.register_pattern(pattern_wids, edit_costs);
+//     }
+// #endif
     /* Consolidation of the results */
 
     /* now explore for the best segments */

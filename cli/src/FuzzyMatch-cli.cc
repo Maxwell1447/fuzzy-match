@@ -439,9 +439,9 @@ int main(int argc, char** argv)
     filter_type = fuzzy::IndexType::BM25;
   else
     filter_type = fuzzy::IndexType::SUFFIX;
-#ifndef USE_EIGEN
-  assert(filter_type != fuzzy::IndexType::BM25);
-#endif
+// #ifndef USE_EIGEN
+//   assert(filter_type != fuzzy::IndexType::BM25);
+// #endif
   const fuzzy::FilterIndexParams filter_index_params(bm25_ratio_idf, 1.5, 0.75);
   processor O(pt, fuzzy, contrastive_factor, nmatch, no_perfect,
               min_subseq_length, min_subseq_ratio,

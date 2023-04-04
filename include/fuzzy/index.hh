@@ -9,9 +9,9 @@
 
 #include <fuzzy/filter.hh>
 #include <fuzzy/suffix_array.hh>
-#ifdef USE_EIGEN
-  #include <fuzzy/bm25.hh>
-#endif
+// #ifdef USE_EIGEN
+//   #include <fuzzy/bm25.hh>
+// #endif
 #include <fuzzy/vocab_indexer.hh>
 #include <fuzzy/sentence.hh>
 
@@ -59,9 +59,9 @@ namespace fuzzy
     VocabIndexer _vocabIndexer;
     std::shared_ptr<Filter> _filter;
     inline std::shared_ptr<Filter> createSuffixArray() { return std::make_shared<SuffixArray>(); }
-#ifdef USE_EIGEN
-    inline std::shared_ptr<Filter> createBM25(const FilterIndexParams &params = FilterIndexParams()) { return std::make_shared<BM25>(params); }
-#endif
+// #ifdef USE_EIGEN
+//     inline std::shared_ptr<Filter> createBM25(const FilterIndexParams &params = FilterIndexParams()) { return std::make_shared<BM25>(params); }
+// #endif
     std::vector<std::string> _ids;
     std::vector<Sentence>    _real_tokens;
     size_t _max_tokens_in_pattern;
